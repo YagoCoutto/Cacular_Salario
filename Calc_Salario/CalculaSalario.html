@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cacula Salario</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <main>
+        <form>
+            <label>Valor da hora</label>
+            <input type="number" name="valorHora" id="input-vlrHora" >
+            <label>Horas Trabalhadas</label>
+            <input type="number" name="horasTrabalhada" id="input-hrTrabalhada" >
+            <div>
+                <input type="button" value="Calcular" onclick="calcular()" class="btt">
+                <input type="button" value="Limpar" onclick="limparCampos()" class="btt">
+            </div>
+            <p id="mostrar"></p>
+        </form>
+    </main>
+    <script>
+        
+        let valorHora = document.getElementById('input-vlrHora');
+        let horasTrabalhada = document.getElementById('input-hrTrabalhada');
+        let res = document.getElementById('mostrar');
+        
+        function calcular() {
+            tot = (parseFloat(valorHora.value) * parseFloat(horasTrabalhada.value))
+            document.getElementById('mostrar').innerText = `R$ ${tot}`
+            console.log(res, valorHora, horasTrabalhada, tot)
+            validaCampo()
+        }
+
+        function validaCampo() {
+            if (document.getElementById('input-vlrHora').value == "") {
+                document.getElementById('input-vlrHora').focus()
+                document.getElementById('mostrar').innerText = `Campo vazio`;
+            }
+            else if (document.getElementById('input-hrTrabalhada').value == "") {
+                document.getElementById('input-hrTrabalhada').focus()
+                document.getElementById('mostrar').innerText = `Campo vazio`;
+            }else if(tot > 500000){
+                document.getElementById('mostrar').innerText = `TáPOHA RYCO D+`;
+            }
+        }
+       
+        function limparCampos() {
+            window.location.reload();
+        }
+
+        /*
+        Conhecimentos adquiridos neste exercicio
+        
+        - Tudo na pagina é string, então é preciso converter para number;
+        - Podemos utilizar getElement no IF;
+        - Utilizando .focus() junto ao getElement faz com que o campo foque no campo informado;
+        - Se não declarar Const/Let em uma variavel dentro da função ela vira Global;
+        - Utilizando Window.location.reload() conseguimos criar um button que atuali a pag.;
+        - No Css há um codigo para remover as setas do campo number;
+        */
+    </script>
+</body>
+
+</html>
